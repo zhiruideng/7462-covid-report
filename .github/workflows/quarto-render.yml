@@ -40,7 +40,7 @@ jobs:
       - name: Render document
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          to: html
+          to: gfm
           path: mn_covid_report.qmd
 
       - name: Setup git config
@@ -50,12 +50,6 @@ jobs:
 
       - name: Commit
         run: |
-          git add mn_covid_report.html
+          git add .
           git commit -m "Updated report"
           git push origin main
-          
-# - name: Upload rendered document
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: rendered_doc
-      #     path: mn_covid_report.html
