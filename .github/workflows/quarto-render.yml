@@ -48,7 +48,7 @@ jobs:
         run: |
           git add mn_covid_report.html
           git commit -m "Updated report"
-          git push origin master
+          git push origin main
           
 # - name: Upload rendered document
       #   uses: actions/upload-artifact@v3
