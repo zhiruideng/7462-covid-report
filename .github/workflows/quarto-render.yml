@@ -3,7 +3,7 @@ on:
     branches: main
   workflow_run:
 
-name: Render README.md
+name: Render Report
 
 jobs:
   build-deploy:
@@ -16,11 +16,13 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - uses: r-lib/actions/setup-r-dependencies@v2
-          with:
+        with:
             packages:
                any::tidyverse
                any::lubridate
       
       - name: Render document
         uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
 
