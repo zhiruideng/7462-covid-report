@@ -41,11 +41,7 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: gfm
-          path: mn_covid_report.qmd
-
-      - name: Move the file
-        run: |
-          mv mn_covid_report.md README.md
+          path: README.qmd
 
       - name: Setup git config
         run: |
