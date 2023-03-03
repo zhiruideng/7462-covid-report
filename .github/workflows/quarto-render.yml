@@ -24,9 +24,8 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
             packages:
-               any::dplyr
-               any::ggplot2
-               any::lubridate
+               any::tidyverse
+               any::rmarkdown
 
       - name: Render document
         uses: quarto-dev/quarto-actions/render@v2
