@@ -1,7 +1,7 @@
 Minnesota COVID Report
 ================
 
-Report last run: 2023-03-03 17:49:11
+Report last run: 2023-03-03 21:34:33
 
 ## Introduction
 
@@ -54,7 +54,9 @@ top10_pop <- pops %>% filter(state == "Minnesota") %>%
 ## Make the plot
 rate_data %>%
     filter(state == "Minnesota", 
-         county %in% top10_pop$county) %>%
+         county %in% top10_pop$county, 
+         # Update!
+         date > Sys.Date() - 30) %>%
   ggplot(aes(x = date, y = rate_last, color = county)) +
   geom_line(linewidth = 2) +
   xlab(NULL) +
