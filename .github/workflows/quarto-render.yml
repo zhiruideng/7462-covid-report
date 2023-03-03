@@ -41,8 +41,8 @@ jobs:
 
       - name: Setup git config
         run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config user.name "Julian Wolfson"
+          git config user.email "julianw@umn.edu"
 
       - name: Commit
         run: |
