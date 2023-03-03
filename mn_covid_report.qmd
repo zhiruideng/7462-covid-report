@@ -1,0 +1,49 @@
+---
+title: "Minnesota COVID Report"
+format: html
+editor: visual
+---
+
+## Introduction
+
+This is an example report that uses COVID-19 data from the New York Times to illustrate the use of automation processes.
+
+### Minnesota, by county
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+LAG_DAYS <- 7
+POP_DENOM <- 100000
+
+pops <- read_csv("countypop_us.csv")
+
+top10_pop <- pops %>% filter(state == "Minnesota") %>%
+  arrange(desc(pop)) %>%
+  slice(1:10) %>%
+  mutate(county = factor(county))
+
+county_data <- read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties-2023.csv") %>%
+  filter(state == "Minnesota", 
+         county %in% top10_pop$county) %>%
+  select(date, state, county, cases) %>%
+  mutate(date = ymd(date),
+         county = factor(county)) %>%
+  left_join(top10_pop, by = c("state", "county")) %>%
+  group_by(state, county) %>%
+  mutate(cases_lag = lag(cases, LAG_DAYS),
+         totalcases_last = cases - cases_lag) %>%
+  ungroup() %>%
+  mutate(rate_last = totalcases_last / pop * POP_DENOM)
+
+county_data %>%
+  ggplot(aes(x = date, y = rate_last, color = county)) +
+  geom_line(linewidth = 2) +
+  xlab(NULL) +
+  ylab("7-day COVID-19 case total per 100,000 population") +
+  scale_color_discrete(name = "") +
+  ggtitle("COVID-19 rates for 10 most populous Minnesota counties")
+```
+
+Last updated: `r Sys.time()`
