@@ -30,6 +30,8 @@ jobs:
                any::dplyr
                any::ggplot2
                any::readr
+               any::lubridate
+               any::forcats
 
       - name: Render document
         uses: quarto-dev/quarto-actions/render@v2
