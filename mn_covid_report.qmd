@@ -13,7 +13,7 @@ This is an example report that uses COVID-19 data from the New York Times to ill
 ```{r}
 library(dplyr)
 library(ggplot2)
-library(lubridate)
+library(readr)
 
 LAG_DAYS <- 7
 POP_DENOM <- 100000
