@@ -43,6 +43,11 @@ jobs:
           to: gfm
           path: mn_covid_report.qmd
 
+      - name: Move the file
+        run: |
+          mv mn_covid_report.md README.md
+          mv mn_covid_report_files README_files
+          
       - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot"
