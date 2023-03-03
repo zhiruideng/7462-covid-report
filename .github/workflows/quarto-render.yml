@@ -39,15 +39,13 @@ jobs:
           to: html
           path: mn_covid_report.qmd
 
-    - name: Setup git config
+      - name: Setup git config
         run: |
-# setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
       - name: Commit
         run: |
-          # Stage the file, commit and push
           git add mn_covid_report.html
           git commit -m "Updated report"
           git push origin master
