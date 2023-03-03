@@ -1,8 +1,6 @@
 ---
 title: "Minnesota COVID Report"
-format: 
-    html:
-      embed-resources: true
+format: gfm
 execute: 
   eval: true
   echo: true
