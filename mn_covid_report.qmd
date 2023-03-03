@@ -11,7 +11,8 @@ This is an example report that uses COVID-19 data from the New York Times to ill
 ### Minnesota, by county
 
 ```{r}
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(lubridate)
 
 LAG_DAYS <- 7
