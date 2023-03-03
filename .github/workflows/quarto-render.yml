@@ -39,9 +39,21 @@ jobs:
           to: html
           path: mn_covid_report.qmd
 
+    - name: Setup git config
+        run: |
+# setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
 
-      - name: Upload rendered document
-        uses: actions/upload-artifact@v3
-        with:
-          name: rendered_doc
-          path: mn_covid_report.html
+      - name: Commit
+        run: |
+          # Stage the file, commit and push
+          git add mn_covid_report.html
+          git commit -m "Updated report"
+          git push origin master
+          
+# - name: Upload rendered document
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: rendered_doc
+      #     path: mn_covid_report.html
