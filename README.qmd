@@ -60,6 +60,7 @@ top10_pop <- pops %>% filter(state == "Minnesota") %>%
 rate_data %>%
     filter(state == "Minnesota", 
          county %in% top10_pop$county,
+         # Update!
          date > Sys.Date() - 30) %>%
   ggplot(aes(x = date, y = rate_last, color = county)) +
   geom_line(linewidth = 2) +
